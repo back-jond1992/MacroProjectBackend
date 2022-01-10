@@ -10,7 +10,9 @@ app.use(express.json());
 
 app.use(cors());
 
-const uri = process.env.DATABASE_TEST;
+console.log("log config", process.env.DATABASE);
+
+const uri = process.env.DATABASE;
 
 const { PORT = 9090 } = process.env;
 

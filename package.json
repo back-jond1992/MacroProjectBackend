@@ -4,7 +4,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=test nodemon app.js"
+    "dev:db": "NODE_ENV=dev",
+    "prod:db": "NODE_ENV=prod node config.js",
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
