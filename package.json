@@ -3,18 +3,24 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=dev jest",
     "dev:db": "NODE_ENV=dev",
     "prod:db": "NODE_ENV=prod node config.js",
     "start": "nodemon app.js"
   },
   "dependencies": {
+    "@shelf/jest-mongodb": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "jest": "^27.4.7",
     "mongodb": "^4.3.0",
     "mongoose": "^6.1.6",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.0"
+  },
+  "jest": {
+    "preset": "@shelf/jest-mongodb"
   },
   "keywords": [],
   "author": "",

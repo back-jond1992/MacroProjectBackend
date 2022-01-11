@@ -10,8 +10,6 @@ app.use(express.json());
 
 app.use(cors());
 
-console.log("log config", process.env.DATABASE);
-
 const uri = process.env.DATABASE;
 
 const { PORT = 9090 } = process.env;
@@ -29,3 +27,5 @@ mongoose
   });
 
 app.use("/api", apiRouter);
+
+module.exports = app;
