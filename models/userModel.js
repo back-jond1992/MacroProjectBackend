@@ -19,7 +19,6 @@ const fetchUser = (user) => {
 };
 
 const addUser = (user) => {
-  console.log(Object.keys(user));
   if (
     !/name/.test(Object.keys(user)) ||
     !/email/.test(Object.keys(user)) ||
