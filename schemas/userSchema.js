@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+console.log(process.env.NODE_ENV);
+
 const userSchema = new Schema(
   {
     name: {
@@ -51,6 +53,10 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model("test_user", userSchema);
+const ENV = process.env.NODE_ENV;
+
+console.log(ENV);
+
+const User = mongoose.model(`${ENV}_user`, userSchema);
 
 module.exports = User;

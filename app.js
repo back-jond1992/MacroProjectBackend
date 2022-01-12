@@ -12,6 +12,8 @@ app.use(cors());
 
 const uri = process.env.DATABASE;
 
+console.log("app", process.env.NODE_ENV);
+
 const { PORT = 9090 } = process.env;
 
 mongoose
