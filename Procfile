@@ -1,1 +1,1 @@
-web: NODE_ENV=prod node app.js
+web: node app.js
