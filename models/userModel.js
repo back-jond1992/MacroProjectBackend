@@ -1,13 +1,13 @@
 const User = require("../schemas/userSchema");
 
-const fetchUser = (user) => {
-  if (!/email/.test(Object.keys(user)) || Object.keys(user).length > 1) {
+const fetchUser = (email) => {
+  if (!/email/.test(Object.keys(email)) || Object.keys(email).length > 1) {
     return Promise.reject({
       status: 400,
       message: "Invalid request",
     });
   }
-  return User.findOne(user).then((response) => {
+  return User.findOne(email).then((response) => {
     if (!response) {
       return Promise.reject({
         status: 404,

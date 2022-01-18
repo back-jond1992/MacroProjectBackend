@@ -1,8 +1,8 @@
 const { fetchUser, addUser } = require("../models/userModel");
 
 const getUser = (req, res, next) => {
-  const user = req.body;
-  fetchUser(user)
+  const email = req.params;
+  fetchUser(email)
     .then((result) => {
       res.status(200).send({ user: result });
     })
