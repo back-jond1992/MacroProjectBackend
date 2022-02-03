@@ -47,16 +47,12 @@ const userSchema = new Schema(
       type: Number,
       required: true,
     },
-    protein: {
-      type: Number,
+    dailyMacros: {
+      type: Object,
       required: true,
     },
-    carbs: {
-      type: Number,
-      required: true,
-    },
-    fat: {
-      type: Number,
+    weeklyMacros: {
+      type: Object,
       required: true,
     },
   },
