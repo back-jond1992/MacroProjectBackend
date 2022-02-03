@@ -30,7 +30,10 @@ const addUser = (user) => {
     !/BMR/.test(Object.keys(user)) ||
     !/TDEE/.test(Object.keys(user)) ||
     !/maintenance/.test(Object.keys(user)) ||
-    !/target/.test(Object.keys(user))
+    !/target/.test(Object.keys(user)) ||
+    !/protein/.test(Object.keys(user)) ||
+    !/carbs/.test(Object.keys(user)) ||
+    !/fat/.test(Object.keys(user))
   ) {
     return Promise.reject({
       status: 400,
