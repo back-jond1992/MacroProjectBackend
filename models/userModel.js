@@ -32,7 +32,8 @@ const addUser = (user) => {
     !/maintenance/.test(Object.keys(user)) ||
     !/target/.test(Object.keys(user)) ||
     !/dailyMacros/.test(Object.keys(user)) ||
-    !/weeklyMacros/.test(Object.keys(user))
+    !/weeklyMacros/.test(Object.keys(user)) ||
+    !/dailyFoodItems/.test(Object.keys(user))
   ) {
     return Promise.reject({
       status: 400,

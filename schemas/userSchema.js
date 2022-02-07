@@ -55,6 +55,10 @@ const userSchema = new Schema(
       type: Object,
       required: true,
     },
+    dailyFoodItems: {
+      type: Array,
+      required: true,
+    },
   },
   { timestamps: true }
 );
