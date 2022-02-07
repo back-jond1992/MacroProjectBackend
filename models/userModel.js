@@ -47,4 +47,21 @@ const addUser = (user) => {
   }
 };
 
-module.exports = { fetchUser, addUser };
+const updateUser = (user, update) => {
+  const testUpdate = Object.keys(update).toString();
+  console.log(testUpdate === "dailyMacros");
+  if (testUpdate === "dailyMacros" || testUpdate === "weeklyMacros" || testUpdate === "dailyFoodItems") {
+    const Id = Object.values(user);
+    const options = { new: true };
+    return User.findByIdAndUpdate(Id, update, options).then((response) => {
+      return response;
+    });
+  } else {
+    return Promise.reject({
+      status: 400,
+      message: "Invalid request",
+    });
+  }
+};
+
+module.exports = { fetchUser, addUser, updateUser };

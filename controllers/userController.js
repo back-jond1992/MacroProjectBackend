@@ -1,4 +1,4 @@
-const { fetchUser, addUser } = require("../models/userModel");
+const { fetchUser, addUser, updateUser } = require("../models/userModel");
 
 const getUser = (req, res, next) => {
   const email = req.params;
@@ -18,4 +18,13 @@ const postUser = (req, res, next) => {
     .catch(next);
 };
 
-module.exports = { getUser, postUser };
+const patchUser = (req, res, next) => {
+  const id = req.params;
+  updateUser(req.params, req.body)
+    .then((result) => {
+      res.status(200).send({ user: result });
+    })
+    .catch(next);
+};
+
+module.exports = { getUser, postUser, patchUser };
