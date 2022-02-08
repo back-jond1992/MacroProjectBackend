@@ -1,21 +1,22 @@
 const User = require("../schemas/userSchema");
 
 const fetchUser = (email) => {
-  if (!/email/.test(Object.keys(email)) || Object.keys(email).length > 1) {
+  if (!/@/.test(Object.values(email))) {
     return Promise.reject({
       status: 400,
       message: "Invalid request",
     });
+  } else {
+    return User.findOne(email).then((response) => {
+      if (!response) {
+        return Promise.reject({
+          status: 404,
+          message: "User not found",
+        });
+      }
+      return response;
+    });
   }
-  return User.findOne(email).then((response) => {
-    if (!response) {
-      return Promise.reject({
-        status: 404,
-        message: "User not found",
-      });
-    }
-    return response;
-  });
 };
 
 const addUser = (user) => {
@@ -49,11 +50,17 @@ const addUser = (user) => {
 
 const updateUser = (user, update) => {
   const testUpdate = Object.keys(update).toString();
-  console.log(testUpdate === "dailyMacros");
   if (testUpdate === "dailyMacros" || testUpdate === "weeklyMacros" || testUpdate === "dailyFoodItems") {
     const Id = Object.values(user);
     const options = { new: true };
     return User.findByIdAndUpdate(Id, update, options).then((response) => {
+      console.log(response);
+      if (!response) {
+        return Promise.reject({
+          status: 404,
+          message: "User not found",
+        });
+      }
       return response;
     });
   } else {
