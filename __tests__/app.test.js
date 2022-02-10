@@ -112,7 +112,16 @@ describe("User Endpoint", () => {
   describe("PATCH Happy Path", () => {
     it("Successfully updates user", () => {
       const id = "62029d2a5b9e31f34a571e99";
-      const update = { dailyMacros: { calories: 1, protein: 1, carbs: 1, fat: 1 } };
+      const update = {
+        dailyMacros: { calories: 1, protein: 1, carbs: 1, fat: 1 },
+        weeklyMacros: {
+          calories: 1,
+          protein: 2,
+          carbs: 3,
+          fat: 4,
+        },
+        dailyFoodItems: ["banana"],
+      };
       app
         .patch(`/api/user/${id}`)
         .send(update)
@@ -125,7 +134,7 @@ describe("User Endpoint", () => {
         });
     });
   });
-  describe("GET Sad Path", () => {
+  describe("PATCH Sad Path", () => {
     it("Rejects request with incorrect user id", () => {
       const id = "62029d2a5b9e31f34a571e88";
       const update = { dailyMacros: { calories: 1, protein: 1, carbs: 1, fat: 1 } };

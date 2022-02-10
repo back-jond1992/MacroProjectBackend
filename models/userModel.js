@@ -49,8 +49,18 @@ const addUser = (user) => {
 };
 
 const updateUser = (user, update) => {
-  const testUpdate = Object.keys(update).toString();
-  if (testUpdate === "dailyMacros" || testUpdate === "weeklyMacros" || testUpdate === "dailyFoodItems") {
+  const testUpdate = Object.keys(update);
+  console.log(testUpdate);
+  console.log(
+    testUpdate.includes("dailyMacros"),
+    testUpdate.includes("weeklyMacros"),
+    testUpdate.includes("dailyFoodItems")
+  );
+  if (
+    testUpdate.includes("dailyMacros") &&
+    testUpdate.includes("weeklyMacros") &&
+    testUpdate.includes("dailyFoodItems")
+  ) {
     const Id = Object.values(user);
     const options = { new: true };
     return User.findByIdAndUpdate(Id, update, options).then((response) => {
